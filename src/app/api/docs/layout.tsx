@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './styles/globals.css'
+import './../../styles/globals.css'
 
 const inter = Inter({ subsets: ['cyrillic-ext'] })
 
 export const metadata: Metadata = {
-  title: 'Auth on Next.JS',
-  description: 'Demo of authentication on Next.JS',
+  title: 'Swagger Docs',
+  description: 'Swagger Documentation',
 }
 
 export default function RootLayout({
