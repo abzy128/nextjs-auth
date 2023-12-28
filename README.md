@@ -1,1 +1,1 @@
-# Auth on Next.JS
+# Auth demo
