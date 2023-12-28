@@ -6,8 +6,24 @@ import styles from "@/styles/Home.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const inter = Inter({ subsets: ["cyrillic-ext"] });
-
 export default function Home() {
+  function register(e) {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const password2 = e.target.password2.value;
+    if (password !== password2) {
+      alert("Passwords do not match");
+      return;
+    }
+    const response = fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = response.json();
+    alert(data);
+  }
   return (
     <>
       <Head>
@@ -28,25 +44,25 @@ export default function Home() {
                 height={128}
               />
             </div>
-            <form>
+            <form onSubmit={register}>
               <input
-                type="text"
-                id="login"
+                type="email"
+                id="email"
                 class="fadeIn second"
-                name="login"
-                placeholder="login"
+                name="email"
+                placeholder="email"
               />
               <input
-                type="text"
+                type="password"
                 id="password"
                 class="fadeIn third"
                 name="password"
                 placeholder="password"
               />
               <input
-                type="text"
+                type="password"
                 id="password2"
-                class="fadeIn third"
+                class="fadeIn fourth"
                 name="password2"
                 placeholder="retype password"
               />

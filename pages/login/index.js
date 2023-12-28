@@ -8,6 +8,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const inter = Inter({ subsets: ["cyrillic-ext"] });
 
 export default function Home() {
+  async function login(e) {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
+    alert(data);
+  }
   return (
     <>
       <Head>
@@ -29,19 +41,19 @@ export default function Home() {
               />
             </div>
 
-            <form>
+            <form onSubmit={login}>
               <input
-                type="text"
-                id="login"
+                type="email"
+                id="email"
                 class="fadeIn second"
-                name="login"
-                placeholder="login"
+                name="email"
+                placeholder="email"
               />
               <input
-                type="text"
+                type="password"
                 id="password"
                 class="fadeIn third"
-                name="login"
+                name="password"
                 placeholder="password"
               />
               <input type="submit" class="fadeIn fourth" value="Log In" />
