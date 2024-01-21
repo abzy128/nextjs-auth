@@ -26,4 +26,6 @@ MONGO_URI=YOUR_MONGO_URI
 
 ```bash
 yarn build | yarn start
+# OR
+npm run build | npm run start
 ```
