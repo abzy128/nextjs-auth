@@ -16,9 +16,8 @@ export default function Home() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    alert(data);
+    }).then((t) => t.json());
+    alert(response.text);
   }
   return (
     <>
@@ -29,9 +28,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div class="wrapper fadeInDown">
+        <div className="wrapper fadeInDown">
           <div id="formContent">
-            <div class="fadeIn first">
+            <div className="fadeIn first">
               <Image
                 src="/next.svg"
                 id="icon"
@@ -45,22 +44,22 @@ export default function Home() {
               <input
                 type="email"
                 id="email"
-                class="fadeIn second"
+                className="fadeIn second"
                 name="email"
                 placeholder="email"
               />
               <input
                 type="password"
                 id="password"
-                class="fadeIn third"
+                className="fadeIn third"
                 name="password"
                 placeholder="password"
               />
-              <input type="submit" class="fadeIn fourth" value="Log In" />
+              <input type="submit" className="fadeIn fourth" value="Log In" />
             </form>
 
             <div id="formFooter">
-              <Link class="underlineHover" href="/register">
+              <Link className="underlineHover" href="/register">
                 Register?
               </Link>
             </div>

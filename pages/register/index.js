@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const inter = Inter({ subsets: ["cyrillic-ext"] });
 export default function Home() {
-  function register(e) {
+  async function register(e) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -16,13 +16,12 @@ export default function Home() {
       alert("Passwords do not match");
       return;
     }
-    const response = fetch("/api/register", {
+    const response = await fetch("/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-    });
-    const data = response.json();
-    alert(data);
+    }).then((res) => res.json());
+    alert(response.text);
   }
   return (
     <>
@@ -33,9 +32,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div class="wrapper fadeInDown">
+        <div className="wrapper fadeInDown">
           <div id="formContent">
-            <div class="fadeIn first">
+            <div className="fadeIn first">
               <Image
                 src="/next.svg"
                 id="icon"
@@ -48,29 +47,29 @@ export default function Home() {
               <input
                 type="email"
                 id="email"
-                class="fadeIn second"
+                className="fadeIn second"
                 name="email"
                 placeholder="email"
               />
               <input
                 type="password"
                 id="password"
-                class="fadeIn third"
+                className="fadeIn third"
                 name="password"
                 placeholder="password"
               />
               <input
                 type="password"
                 id="password2"
-                class="fadeIn fourth"
+                className="fadeIn fourth"
                 name="password2"
                 placeholder="retype password"
               />
-              <input type="submit" class="fadeIn fourth" value="Log In" />
+              <input type="submit" className="fadeIn fourth" value="Register" />
             </form>
 
             <div id="formFooter">
-              <Link class="underlineHover" href="/login">
+              <Link className="underlineHover" href="/login">
                 Login?
               </Link>
             </div>
